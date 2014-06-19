@@ -1,12 +1,12 @@
-class User
-  attr_accessor :name, :email
+class Wordness
+  attr_accessor :word
 
   def initialize(attributes = {})
-    @name  = attributes[:name]
-    @email = attributes[:email]
+    @word = attributes[:word]
   end
-
-  def formatted_email
-    "#{@name} <#{@email}>"
+  
+  def shuffler
+	p @word.split('').to_a.shuffle.join
   end
 end
+
