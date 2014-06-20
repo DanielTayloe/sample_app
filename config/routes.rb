@@ -1,6 +1,10 @@
 SampleApp::Application.routes.draw do
+  get "users/new"
 #new routing
   root  'static_pages#home' #Defines for us root_path and root_url
+  
+  #Defines for us signup_path and signup_url
+  match '/signup',  to: 'users#new',            via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
