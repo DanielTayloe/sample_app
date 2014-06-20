@@ -1,8 +1,15 @@
 SampleApp::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
-  get "static_pages/contact"
+#new routing
+  root  'static_pages#home' #Defines for us root_path and root_url
+  match '/help',    to: 'static_pages#help',    via: 'get'
+  match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+	
+# Old routing
+#   get "static_pages/home"
+#   get "static_pages/help"
+#   get "static_pages/about"
+#   get "static_pages/contact"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
