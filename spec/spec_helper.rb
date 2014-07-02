@@ -42,4 +42,7 @@ RSpec.configure do |config|
   
   #for capybara
   config.include Capybara::DSL
+
+  #for fixing the undefined method patch
+  #config.include Rails.application.routes.url_helpers
 end
