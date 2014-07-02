@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy
 
-  #Shows all of the users
+  #Shows all of the users, in a paged way
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   #Shows the current user's profile
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
 
   def edit
-    #The before_action(s) handle accessing the edit and update pages
+    #The before_action(s) handle accessing the edit and update pages for unauthorized users
     #@user = User.find(params[:id])
   end
 
@@ -43,6 +44,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:sucess] = "User deleted."
+    redirect_to users_url
   end
   
   private
@@ -62,6 +69,10 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
   
 end
