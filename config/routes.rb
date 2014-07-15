@@ -1,9 +1,14 @@
 SampleApp::Application.routes.draw do
 
 #sets up all actions needed for a resource (in this case users), and a users_path
-resources :users
+resources :users do
+  member do
+    get :following, :followers
+  end
+end
 resources :sessions, only: [:new, :create, :destroy]
 resources :microposts, only: [:create, :destroy]
+resources :relationships, only: [:create, :destroy]
 
 #Defines for us root_path and root_url
 root  'static_pages#home'
