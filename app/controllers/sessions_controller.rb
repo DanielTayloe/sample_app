@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 #Manages the current session by using
 
 
-#Used at Sign in
+#Used at Sign in, renders the view 'new' for sessions
 def new
 end
 
