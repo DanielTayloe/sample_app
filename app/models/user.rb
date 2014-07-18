@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  # searchable do
+  #   text :name
+  # end
+
   private
   	def create_remember_token
   		self.remember_token = User.digest(User.new_remember_token)

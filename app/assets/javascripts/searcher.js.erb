@@ -1,8 +1,13 @@
-var availableTags
-$(function(){
-    $("#tags").keydown(function(){
-        $( "#tags" ).autocomplete({
-            source: <%= Micropost.all.map{ |i| i.content} %>
-        });
+$(function() {
+    var microsearch = <%= Micropost.all.map{ |i| i.content} %>;
+    $( "#microsearch_tag" ).autocomplete({
+        source: microsearch
+    });
+});
+
+$(function() {
+    var usersearch = <%= User.all.map{ |i| i.name} %>;
+    $( "#usersearch_tag" ).autocomplete({
+        source: usersearch
     });
 });
