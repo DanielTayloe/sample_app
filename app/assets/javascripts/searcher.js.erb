@@ -1,13 +1,8 @@
 var availableTags
 $(function(){
-    availableTags = <%= Micropost.all.map{ |i| i.content} %>
-    $( "#tags" ).autocomplete({
-            source: availableTags
-    });
     $("#tags").keydown(function(){
-        availableTags = <%= Micropost.all.map{ |i| i.content} %>
         $( "#tags" ).autocomplete({
-            source: availableTags
-        })
-    })
+            source: <%= Micropost.all.map{ |i| i.content} %>
+        });
+    });
 });
