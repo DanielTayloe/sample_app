@@ -1,6 +1,6 @@
 module ApplicationHelper
-  # Returns the full title on a per-page basis.
 
+  # Returns the full title on a per-page basis.
   def full_title(page_title)
     base_title = "Ruby on Rails Tutorial Sample App"
     if page_title.empty?
@@ -9,4 +9,12 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  # def list_users
+  #   User.all.map{ |i| i.name}
+  # end
+  #
+  # def list_microposts
+  #   Micropost.all.map{ |i| i.content}
+  # end
 end
